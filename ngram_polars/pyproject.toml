@@ -5,6 +5,11 @@ build-backend = "maturin"
 [project]
 name = "ngram_polars"
 requires-python = ">=3.9"
+readme = "README.md"
+authors = [
+    { name = "Eric" }
+]
+license = { text = "MIT" }
 description = "High-performance n-gram generation for Polars"
 keywords = ["ngram", "polars", "text-processing", "nlp", "data-analysis"]
 classifiers = [

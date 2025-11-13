@@ -54,7 +54,7 @@ test: ngram_rs_release ngram_polars_dev
 	uv run pytest ngram_polars/tests/test_ngram_polars_reg.py
 
 .PHONY: ngram_polars_release
-ngram_polars_release:	clippy
+ngram_polars_release: clippy test
 ifeq ($(OS),Windows_NT)
 	powershell -Command "Remove-Item -Path ngram_polars\*.pyd -Force"
 endif
@@ -66,30 +66,30 @@ endif
 			RUSTFLAGS="$(RUSTFLAGS_APPLE_M1)" $(VENV_BIN)/uv run --python $(pyver) python -m maturin build -m ngram_polars/Cargo.toml --release --strip --target $(target) --out $(DIST_DIR) ;\
 		)\
 	)
-	$(foreach target,$(MACOS_X8_TARGETS),\
-		$(foreach pyver,$(PYTHON_VERSIONS),\
-			$(call create_venv_py, $(pyver)) ;\
-			RUSTFLAGS="$(RUSTFLAGS_X86_64_V3)" $(VENV_BIN)/uv run --python $(pyver) python -m maturin build -m ngram_polars/Cargo.toml  --release --strip --target $(target) --out $(DIST_DIR) ;\
-		)\
-	)
-	$(foreach target,$(LINUX_X8_TARGETS),\
-		$(foreach pyver,$(PYTHON_VERSIONS),\
-			$(call create_venv_py, $(pyver)) ;\
-			RUSTFLAGS="$(RUSTFLAGS_X86_64_V3)" $(VENV_BIN)/uv run --python $(pyver) python -m maturin build -m ngram_polars/Cargo.toml --release -i python$(pyver) --strip --target $(target) --manylinux 2014 --zig --out $(DIST_DIR) ;\
-		)\
-	)
-	$(foreach target,$(LINUX_AA_TARGETS),\
-		$(foreach pyver,$(PYTHON_VERSIONS),\
-			$(call create_venv_py, $(pyver)) ;\
-			$(VENV_BIN)/uv run --python $(pyver) python -m maturin build -m ngram_polars/Cargo.toml --release -i python$(pyver) --strip --target $(target) --manylinux 2014 --zig --out $(DIST_DIR) ;\
-		)\
-	)
-	$(foreach target,$(WINDOWS_TARGETS),\
-		$(foreach pyver,$(PYTHON_VERSIONS),\
-			$(call create_venv_py, $(pyver)) ;\
-			RUSTFLAGS="$(RUSTFLAGS_X86_64_V3)" $(VENV_BIN)/uv run --python $(pyver) python -m maturin build -m ngram_polars/Cargo.toml --release -i python$(pyver) --strip --target $(target) --out $(DIST_DIR) ;\
-		)\
-	)
+# 	$(foreach target,$(MACOS_X8_TARGETS),\
+# 		$(foreach pyver,$(PYTHON_VERSIONS),\
+# 			$(call create_venv_py, $(pyver)) ;\
+# 			RUSTFLAGS="$(RUSTFLAGS_X86_64_V3)" $(VENV_BIN)/uv run --python $(pyver) python -m maturin build -m ngram_polars/Cargo.toml  --release --strip --target $(target) --out $(DIST_DIR) ;\
+# 		)\
+# 	)
+# 	$(foreach target,$(LINUX_X8_TARGETS),\
+# 		$(foreach pyver,$(PYTHON_VERSIONS),\
+# 			$(call create_venv_py, $(pyver)) ;\
+# 			RUSTFLAGS="$(RUSTFLAGS_X86_64_V3)" $(VENV_BIN)/uv run --python $(pyver) python -m maturin build -m ngram_polars/Cargo.toml --release -i python$(pyver) --strip --target $(target) --manylinux 2014 --zig --out $(DIST_DIR) ;\
+# 		)\
+# 	)
+# 	$(foreach target,$(LINUX_AA_TARGETS),\
+# 		$(foreach pyver,$(PYTHON_VERSIONS),\
+# 			$(call create_venv_py, $(pyver)) ;\
+# 			$(VENV_BIN)/uv run --python $(pyver) python -m maturin build -m ngram_polars/Cargo.toml --release -i python$(pyver) --strip --target $(target) --manylinux 2014 --zig --out $(DIST_DIR) ;\
+# 		)\
+# 	)
+# 	$(foreach target,$(WINDOWS_TARGETS),\
+# 		$(foreach pyver,$(PYTHON_VERSIONS),\
+# 			$(call create_venv_py, $(pyver)) ;\
+# 			RUSTFLAGS="$(RUSTFLAGS_X86_64_V3)" $(VENV_BIN)/uv run --python $(pyver) python -m maturin build -m ngram_polars/Cargo.toml --release -i python$(pyver) --strip --target $(target) --out $(DIST_DIR) ;\
+# 		)\
+# 	)
 
 .PHONY: publish_ngram_rs
 publish_iban_validation_rs: test
@@ -110,7 +110,6 @@ clean:
 	rustup update
 	rustup component add llvm-tools-preview
 	cargo clean
-	$(MAKE) clean_wheels
 	$(RMRF) .pytest_cache
 	$(RMRF) .venv
 	$(RMRF) target

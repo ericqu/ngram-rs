@@ -2,6 +2,12 @@
 name = "ngram_polars"
 version = { workspace = true }
 edition = { workspace = true }
+readme = "README.md"
+authors = [
+    "Eric" 
+]
+license = "MIT" 
+description = "High-performance n-gram generation for Polars"
 
 [lib]
 name = "ngram_polars"
