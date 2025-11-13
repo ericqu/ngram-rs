@@ -96,6 +96,10 @@ publish_iban_validation_rs: test
 	cargo doc
 	cargo publish -p ngram_rs 
 
+.PHONY: publishing_pipy
+publishing_pipy:
+	$(VENV_BIN)/python3 -m twine upload $(DIST_DIR)/* --verbose
+
 .PHONY: clean
 clean:
 	rustup update

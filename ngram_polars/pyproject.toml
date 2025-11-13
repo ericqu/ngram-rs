@@ -5,13 +5,35 @@ build-backend = "maturin"
 [project]
 name = "ngram_polars"
 requires-python = ">=3.9"
+description = "High-performance n-gram generation for Polars"
+keywords = ["ngram", "polars", "text-processing", "nlp", "data-analysis"]
 classifiers = [
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+
 dynamic = ["version"]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/ericqu/ngram-rs/tree/main/ngram_polars"
+Repository = "https://github.com/ericqu/ngram-rs/tree/main/ngram_polars"
+"Bug Tracker" = "https://github.com/ericqu/ngram-rs/issues"
 
 [project.optional-dependencies]
 dev = ["pytest", "pytest-benchmark"]
