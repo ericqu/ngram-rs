@@ -1,0 +1,8 @@
+[workspace]
+resolver = "3"
+members = ["ngram_rs", "ngram_polars"]
+default-members = ["ngram_rs"]
+
+[workspace.package]
+version = "0.1.1"
+edition = "2024"

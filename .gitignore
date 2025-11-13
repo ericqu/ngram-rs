@@ -1,0 +1,12 @@
+Cargo.lock
+target/
+.vscode/
+.venv/
+.pytest_cache/
+.DS_Store
+*.so
+*.pyc
+__pycache__/
+dist/
+ngram_polars/tests/diagnostics.py
+uv.lock

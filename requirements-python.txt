@@ -1,0 +1,12 @@
+# build
+maturin == 1.9.6
+pip
+twine
+setuptools
+uv
+ziglang
+patchelf; platform_system == 'Linux'
+
+#test
+pytest
+polars
