@@ -96,9 +96,14 @@ publish_iban_validation_rs: test
 	cargo doc
 	cargo publish -p ngram_rs 
 
-.PHONY: publishing_pipy
-publishing_pipy:
-	$(VENV_BIN)/python3 -m twine upload $(DIST_DIR)/* --verbose
+.PHONY: publishing_pypi
+publishing_pypi:
+	$(VENV_BIN)/python -m twine upload $(DIST_DIR)/* --verbose
+
+.PHONY: publishing_testpypi
+publishing_testpypi:
+	$(VENV_BIN)/python -m twine upload --repository-url https://test.pypi.org/legacy/ $(DIST_DIR)/* --verbose
+
 
 .PHONY: clean
 clean:
