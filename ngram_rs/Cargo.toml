@@ -2,5 +2,11 @@
 name = "ngram_rs"
 version = { workspace = true }
 edition = { workspace = true }
+authors = [ "Eric Quéré" ]
+readme = "README.md"
+homepage = "https://github.com/ericqu/ngram-rs"
+license = "MIT"
+repository = "https://github.com/ericqu/ngram-rs"
+description = "Facilitate creating ngrams in Rust to be used in the polars plugin."
 
 [dependencies]

@@ -91,7 +91,10 @@ endif
 		)\
 	)
 
-
+.PHONY: publish_ngram_rs
+publish_iban_validation_rs: test
+	cargo doc
+	cargo publish -p ngram_rs 
 
 .PHONY: clean
 clean:
