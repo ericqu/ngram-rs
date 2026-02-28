@@ -19,7 +19,7 @@ MACOS_X8_TARGETS := x86_64-apple-darwin
 LINUX_AA_TARGETS := aarch64-unknown-linux-gnu
 LINUX_X8_TARGETS := x86_64-unknown-linux-gnu
 WINDOWS_TARGETS := x86_64-pc-windows-msvc
-PYTHON_VERSIONS := 3.9 3.10 3.11 3.12 3.13
+PYTHON_VERSIONS := 3.10 3.11 3.12 3.13 3.14
 
 RUSTFLAGS_NATIVE := -C target-cpu=native -C opt-level=3
 RUSTFLAGS_X86_64_V3 := -C target-cpu=x86-64-v3 -C opt-level=3
