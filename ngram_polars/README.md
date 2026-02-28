@@ -73,6 +73,9 @@ Generate n-grams from a list of strings.
 - Choose Appropriate N-Range: Only generate the n-gram sizes you actually need
 
 ### Requirements
-- Python 3.9 -> 3.13
+- Python 3.10 -> 3.14
 - Polars requirement are not fully tested, tested on the latest version.
 - Compatible with both eager and lazy Polars APIs
+
+## Changes
+0.1.2:  Updated to Rust 1.93.1 and Polars 0.53.0 (dropped python 3.9 added 3.14)

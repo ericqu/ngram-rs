@@ -69,3 +69,6 @@ The library is optimized for:
 - Specialized implementations for unigrams and bigrams
 - Efficient windowing algorithms for higher-order n-grams
 - Zero-copy operations where possible
+
+## Changes
+0.1.2:  Updated to Rust 1.93.1 and Polars 0.53.0 (dropped python 3.9 added 3.14)
