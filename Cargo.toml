@@ -4,5 +4,5 @@ members = ["ngram_rs", "ngram_polars"]
 default-members = ["ngram_rs"]
 
 [workspace.package]
-version = "0.1.2"
+version = "0.1.3"
 edition = "2024"
