@@ -9,7 +9,7 @@ readme = "README.md"
 authors = [
     { name = "Eric" }
 ]
-license = { text = "MIT" }
+license = { file = "LICENSE" }
 description = "High-performance n-gram generation for Polars"
 keywords = ["ngram", "polars", "text-processing", "nlp", "data-analysis"]
 classifiers = [
