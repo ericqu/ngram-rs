@@ -1,6 +1,8 @@
 import polars as pl
 from ngram_polars import ngrams
 
+pl.Config.set_tbl_width_chars(60)
+
 def main():
     # Create sample data
     df = pl.DataFrame({
@@ -59,6 +61,23 @@ def main():
     
     print("Lazy evaluation result:")
     print(lazy_result)
+
+    # Example 6: letter based
+    result6 = df.with_columns(
+        four_gram = ngrams(pl.col("words").list.join("").str.split(""), n_range=[4], delimiter="")
+    )
+    
+    print("letter 4-grams with no delimiter:")
+    print(result6)
+
+    # Example 7: letter based , but not across words
+    result7 = (df
+               .explode('words', empty_as_null=True, keep_nulls=False)
+               .with_columns(four_gram = ngrams(pl.col("words").str.split(""), n_range=[4], delimiter=""))
+    )
+    print("letter 4-grams per word with no delimiter:")
+    print(result7)
+
 
 if __name__ == "__main__":
     main()
